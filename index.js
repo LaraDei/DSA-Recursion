@@ -1,4 +1,6 @@
 //*************************************************** */
+//*************************************************** */
+//*************************************************** */
 // 1. Counting Sheep
 
 const numOfSheep = function(num) {
@@ -14,6 +16,10 @@ const numOfSheep = function(num) {
 }
 //console.log(numOfSheep(3));
 
+
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 2. Power Calculator
 
@@ -35,6 +41,10 @@ const powerCalculator = function(base, exponent) {
 }
 //console.log(powerCalculator(3, 4));
 
+
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 3. Reverse String
 
@@ -51,6 +61,10 @@ const reverseString = function(str) {
 
 //console.log(reverseString('happy'));
 
+
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 4. nth Triangular Number
 
@@ -66,6 +80,10 @@ const triangular  = function(num) {
 }
 //console.log(triangular(9));
 
+
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 5. String Splitter
 
@@ -84,6 +102,10 @@ const splitter  = function(string, separator) {
 
 //console.log(splitter('02/20/2020', '/'));
 
+
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 6. Fibonacci
 
@@ -98,6 +120,10 @@ const fibonacci  = function(num) {
 
 //console.log(fibonacci(7));
 
+
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 7. Factorial
 
@@ -112,6 +138,10 @@ const factorial  = function(num) {
 
 //console.log(factorial(5));
 
+
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 8. Find a way out of the maze
   
@@ -218,6 +248,10 @@ const mazePath = function(maze){
 // console.log(mazePath(mySmallMaze))
 // console.log(mazePath(maze))
 
+
+//*************************************************** */
+//*************************************************** */
+//*************************************************** */
 // 9. Find ALL the ways out of the maze
 
 const mazeAllPaths = function(maze){
@@ -303,34 +337,108 @@ const mazeAllPaths = function(maze){
 
 // console.log(mazeAllPaths(mySmallMaze))
 // console.log(mazeAllPaths(maze))
+ 
 
+
+//*************************************************** */
+//*************************************************** */
 //*************************************************** */
 // 10. Anagrams
 
-const anagrams  = function(num) {
+const anagrams  = function(str) {
     // Base case
-
-    
+    if(str.length <2 ){
+        return str;
+    }
     // General case
-    return 
-}
+    let results = []
+    for (var i = 0; i < str.length; i++) 
+      {
+        var firstChar = str[i];
+        var otherChar = str.substring(0, i) + str.substring(i + 1);
+        var otherPermutations = anagrams(otherChar);
+        
+        for (var j = 0; j < otherPermutations.length; j++) {
+          results.push(firstChar + otherPermutations[j]);
+        }
+      }
+      return results;
+    }
 
-//console.log(anagrams(5));
+//console.log(anagrams('east'));
+
 
 
 //*************************************************** */
+//*************************************************** */
+//*************************************************** */
 // 11. Organization Chart
+const chartData =[
+    {id: 'Zuckerberg', boss: null},
+    {id: 'Schroepfer', boss: 'Zuckerberg'},
+    {id: 'Schrage', boss: 'Zuckerberg'},
+    {id: 'Sandberg', boss: 'Zuckerberg'},
+    {id: 'Bosworth', boss:'Schroepfer' },
+    {id: 'Zhao', boss:'Schroepfer' },
+    {id: 'Steve', boss:'Bosworth' },
+    {id: 'Kyle', boss:'Bosworth' },
+    {id: 'Andra', boss:'Bosworth' },
+    {id: 'Richie', boss: 'Zhao'},
+    {id: 'Sofia', boss: 'Zhao'},
+    {id: 'Jen', boss: 'Zhao'},
+    {id: 'VanDyck', boss:'Schrage' },
+    {id: 'Swain', boss:'Schrage' },
+    {id: 'Sabrina', boss:'VanDyck' },
+    {id: 'Michelle', boss:'VanDyck' },
+    {id: 'Josh', boss:'VanDyck' },
+    {id: 'Blanch', boss:'Swain' },
+    {id: 'Tom', boss:'Swain' },
+    {id: 'Joe', boss:'Swain' },
+    {id: 'Goler', boss:'Sandberg' },
+    {id: 'Hernandez', boss:'Sandberg' },
+    {id: 'Moissinac', boss:'Sandberg' },
+    {id: 'Kelley', boss:'Sandberg' },
+    {id: 'Eddie', boss:'Goler' },
+    {id: 'Julie', boss:'Goler' },
+    {id: 'Annie', boss:'Goler' },
+    {id: 'Rowi', boss:'Hernandez'},
+    {id: 'Inga', boss:'Hernandez'},
+    {id: 'Morgan', boss:'Hernandez'},
+    {id: 'Amy', boss:'Moissinac'},
+    {id: 'Chuck', boss:'Moissinac'},
+    {id: 'Vinni', boss:'Moissinac'},
+    {id: 'Eric', boss:'Kelley'},
+    {id: 'Ana', boss:'Kelley'},
+    {id: 'Wes', boss:'Kelley'},
+  ];
 
-const chart  = function(num) {
+  const hierarchy  = function(arr, boss) {
+      let result = {};
     // Base case
-
-    
+    if(arr.length <= 1){
+        result = arr.map(i => {
+            i.id
+        })
+    }
     // General case
-    return 
+    arr 
+        .filter(i => i.boss === boss)
+        .forEach(i => result[i.id] = hierarchy(arr, i.id))
+    return result
 }
 
-//console.log(chart(5));
-
+console.log(hierarchy(chartData, null));
 
 //*************************************************** */
 //12. Binary Representation
+
+const binary  = function(num) {
+    // Base case
+    if(num === 0){
+        return num
+    }
+    // General case
+    return num.toString(2)
+}
+
+//console.log(binary(3));
